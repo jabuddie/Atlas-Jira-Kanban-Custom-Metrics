@@ -1,0 +1,14 @@
+# Ignore Jupyter notebook checkpoint files
+.ipynb_checkpoints/
+
+# Ignore environment secrets
+.env
+
+# Ignore temporary files
+*.log
+*.tmp
+*.bak
+
+
+# Ignore data exports 
+data/
