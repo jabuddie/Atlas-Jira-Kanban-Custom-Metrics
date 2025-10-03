@@ -22,9 +22,9 @@ A free and comprehensive Jupyter notebook-based analytics suite for extracting a
 
 - **Throughput Analysis**: Monthly volume tracking, KTLO percentage breakdown, stacked bar charts with trend lines
 - **Lead Time Analysis**: Monthly lead time tracking, distribution analysis, assignee-based metrics, outlier filtering  
-- **Cycle Time Analysis**: In Progress → Done time tracking with comprehensive charting
+- **Cycle Time Analysis**: 'In Progress' to 'Done' time tracking with comprehensive charting
 - **WIP Analysis**: Daily and monthly work-in-progress history with line and bar chart visualizations
-- **Built-in Debug Features**: Uncomment sections in notebooks to view detailed issue data and troubleshoot
+- **Built-in Debug Features**: Uncomment sections in notebooks to view detailed issue data and troubleshoot. Or use testAPIToken notebook if you suspect an API connection issue
 
 ## Prerequisites
 
@@ -88,32 +88,22 @@ jupyter notebook
 
 ## Important Notes
 
-### Custom Field Dependencies
-The **Throughput Analysis** includes KTLO% (Keep The Lights On) metrics that depend on a custom field (`customfield_10239`) used to tag issues as either:
-- **KTLO**: Maintenance/operational work
-- **Project**: New feature/project work
-
-**To customize for your environment:**
-- Replace `customfield_10239` with your custom field ID, or
-- Remove KTLO-related calculations if not applicable
-
-## Important Notes
-
 ### Custom Jira Fields
 This suite uses a **custom field** to flag KTLO (Keep the Lights On) items:
 - **Jira Custom Field**: `customfield_10239`
 - **Value**: "KTLO"
 
 If your Jira instance does **not** include a similar custom field, you'll need to:
-- Modify the `determine_ktlo()` function in `utils.py`
-- Remove KTLO-based metrics or adjust classification logic
+**To customize for your environment:**
+- Replace `customfield_10239` with your custom field ID, or
+- Remove KTLO-related calculations if not applicable from the notebook & utils.py
 
 ### Workflow-Specific Logic
-- **Cycle Time** is based on transitions into "In Progress" → "Done"
-- **Lead Time** is based on issue statuses "Backlog" → "Done" dates  
+- **Cycle Time** is based on transitions from "In Progress" → "Done"
+- **Lead Time** is based on issue statuses "Backlog" → "Done" 
 - **WIP** is tracked by parsing changelogs for "In Progress" intervals
 
-You may need to adjust these terms depending on your team's Jira workflows.
+You may need to adjust these statuses depending on your team's Jira workflows.
 
 ### Data Security
 - All API credentials are stored securely in the `.env` file
